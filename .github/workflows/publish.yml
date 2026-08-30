@@ -24,13 +24,14 @@ jobs:
         with:
           node-version: "22.18.0"
           registry-url: "https://npm.pkg.github.com"
+
       - name: Check Node and npm
         run: |
           node --version
           npm --version
 
       - name: Install dependencies
-        run: npm ci
+        run: npm Install
 
       - name: Build package
         run: npm run build
