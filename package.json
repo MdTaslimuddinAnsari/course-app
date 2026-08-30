@@ -18,11 +18,11 @@
     "trailingComma": "es5"
   },
   "keywords": [],
-  "name": "",
-  "author": "",
+  "name": "@MdTaslimuddinAnsari/course-app",
+  "author": "Taslim",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/MdTaslimuddinAnsari/course-app.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -39,8 +39,15 @@
   },
   "types": "./src/index.d.ts",
   "dependencies": {
+    "@elastic/elasticsearch": "^9.5.0",
+    "cloudinary": "^2.11.0",
     "express": "^5.2.1",
-    "typescript": "^7.0.2"
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.4",
+    "typescript": "^7.0.2",
+    "winston": "^3.19.0",
+    "winston-elasticsearch": "^0.19.0"
   },
   "devDependencies": {
     "@babel/cli": "^8.0.4",

@@ -8,7 +8,7 @@
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
     "noEmitOnError": true,
     "outDir": "build",
     "rootDir": "src",
