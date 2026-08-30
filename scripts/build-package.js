@@ -35,4 +35,3 @@ fs.writeFileSync(
   JSON.stringify(packageJson, null, 2)
 );
 
-// console.log("✅ build/package.json created");
