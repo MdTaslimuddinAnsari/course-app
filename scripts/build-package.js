@@ -1,26 +1,38 @@
-const BABEL_ENV = process.env.BABEL_ENV;
+const fs = require("fs");
+const path = require("path");
 
-const isCommonJS = BABEL_ENV === "cjs";
-const isESM = BABEL_ENV === "esm";
+const rootPackage = require("../package.json");
 
-module.exports = () => ({
-  assumptions: {
-    setPublicClassFields: true
-  },
+const buildDir = path.resolve(__dirname, "../build");
 
-  presets: [
-    "@babel/preset-typescript",
+const packageJson = {
+  name: rootPackage.name,
+  version: rootPackage.version,
+  description: rootPackage.description,
 
-    [
-      "@babel/preset-env",
-      {
-        modules: isCommonJS ? "commonjs" : false,
+  main: "./cjs/index.js",
+  module: "./esm/index.js",
+  types: "./src/index.d.ts",
 
-        targets: {
-          esmodules: isESM ? true : undefined,
-          chrome: "70"
-        }
-      }
-    ]
-  ]
-});
+  files: [
+    "cjs",
+    "esm",
+    "src"
+  ],
+
+  dependencies: rootPackage.dependencies,
+  peerDependencies: rootPackage.peerDependencies,
+
+  publishConfig: {
+    registry: "https://npm.pkg.github.com"
+  }
+};
+
+fs.mkdirSync(buildDir, { recursive: true });
+
+fs.writeFileSync(
+  path.join(buildDir, "package.json"),
+  JSON.stringify(packageJson, null, 2)
+);
+
+// console.log("✅ build/package.json created");
