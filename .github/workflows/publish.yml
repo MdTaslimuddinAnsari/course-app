@@ -41,6 +41,10 @@ jobs:
           echo "@MdTaslimuddinAnsari:registry=https://npm.pkg.github.com" > build/.npmrc
           echo "//npm.pkg.github.com/:_authToken=\${NPM_TOKEN}" >> build/.npmrc
 
+      #This will automatically increment: 0.0.1 → 0.0.2 → 0.0.3 → 0.0.4 
+      - name: Bump version 
+        run: npm version patch --no-git-tag-version
+
       - name: Publish package
         working-directory: ./build
         run: npm publish
